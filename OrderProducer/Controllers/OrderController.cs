@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OrderProducer.Services;
 using OrderProducer.Models;
 using System.Text.Json;
 
@@ -32,7 +31,7 @@ namespace OrderProducer.Controllers
 
             await _orderProducer.ProduceAsync(topic, orderRequest.OrderId.ToString(), message);
 
-            return Ok(new { Status = "Order produced", orderRequest.OrderId });
+            return Ok(new { Status = "Order produced", OrderId = orderRequest.OrderId });
         }
     }
 }

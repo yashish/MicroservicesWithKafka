@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Microsoft.Extensions.Logging;
 
 namespace OrderProducer.Services
 {
