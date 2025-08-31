@@ -1,4 +1,6 @@
 using Confluent.Kafka;
+using OrderConsumer.Models;
+using System.Text.Json;
 
 namespace OrderConsumer.Services
 {
@@ -55,13 +57,31 @@ namespace OrderConsumer.Services
                         var result = consumer.Consume(stoppingToken);
                         if (result != null)
                         {
-                            _logger.LogInformation("Received message: Key={Key}, Value={Value}, Partition={Partition}, Offset={Offset}",
-                                result.Message.Key, result.Message.Value, result.Partition, result.Offset);
+                            try
+                            {
+                                // Example: Deserialize message value
+                                 var order = JsonSerializer.Deserialize<OrderRequest>(result.Message.Value);
+                                _logger.LogInformation("Received message: Key={Key}, Value={Value}, Partition={Partition}, Offset={Offset}",
+                                    result.Message.Key, result.Message.Value, result.Partition, result.Offset);
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogError(ex, "Error deserializing message: {Value}", result.Message.Value);
+                                // Optionally: send to dead-letter topic or skip
+                            }
                         }
+                    }
+                    catch (ConsumeException ex)
+                    {
+                        _logger.LogError(ex, "Kafka consumption error: {Reason}", ex.Error.Reason);
                     }
                     catch (OperationCanceledException)
                     {
                         _logger.LogInformation("Consumer cancellation requested.");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Unexpected error during consumption.");
                     }
                 }
                 else
