@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProducer", "OrderProdu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderConsumer", "OrderConsumer\OrderConsumer.csproj", "{94221677-58DC-43D5-9E07-822ACC1015AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProducer.Tests", "OrderProducer.Tests\OrderProducer.Tests.csproj", "{0DF016CA-F55F-4DC3-A297-64519D9BEA7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{94221677-58DC-43D5-9E07-822ACC1015AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94221677-58DC-43D5-9E07-822ACC1015AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94221677-58DC-43D5-9E07-822ACC1015AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF016CA-F55F-4DC3-A297-64519D9BEA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF016CA-F55F-4DC3-A297-64519D9BEA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF016CA-F55F-4DC3-A297-64519D9BEA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF016CA-F55F-4DC3-A297-64519D9BEA7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
